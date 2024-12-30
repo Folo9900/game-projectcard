@@ -1,0 +1,58 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        "inventory": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid",
+          "$cardId": {
+            ".validate": "newData.hasChildren(['id', 'name', 'type', 'rarity', 'attack', 'defense', 'description'])"
+          }
+        },
+        "experience": {
+          ".validate": "newData.isNumber()"
+        },
+        "level": {
+          ".validate": "newData.isNumber()"
+        },
+        "lastLogin": {
+          ".validate": "newData.isString()"
+        },
+        "createdAt": {
+          ".validate": "newData.isString()"
+        },
+        "guild": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid"
+        }
+      }
+    },
+    "guilds": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$guildId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "members": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "chat": {
+          ".read": "auth != null",
+          ".write": "auth != null",
+          "$messageId": {
+            ".validate": "newData.hasChildren(['userId', 'message', 'timestamp'])"
+          }
+        }
+      }
+    },
+    "cards": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Collector Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div id="auth-container">
+        <div class="auth-box">
+            <div id="authError" class="error-message"></div>
+            
+            <form id="loginForm" class="auth-form">
+                <h2>Вход</h2>
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+            </form>
+
+            <form id="registerForm" class="auth-form">
+                <h2>Регистрация</h2>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Пароль" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <div id="map-panel" class="panel">
+            <div id="map"></div>
+        </div>
+        
+        <div id="inventory-panel" class="panel">
+            <div id="inventory-list"></div>
+        </div>
+        
+        <div id="guild-panel" class="panel">
+            <div id="guild-info"></div>
+        </div>
+
+        <div id="chat-panel" class="panel">
+            <div id="chat-messages">
+                <!-- Здесь будут сообщения -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-message-input" placeholder="Введите сообщение..." autocomplete="off">
+                <button type="button" id="chat-send-btn">Отправить</button>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button id="map-btn" class="nav-btn">Карта</button>
+            <button id="inventory-btn" class="nav-btn">Инвентарь</button>
+            <button id="guild-btn" class="nav-btn">Гильдия</button>
+            <button id="chat-btn" class="nav-btn">Чат</button>
+            <button id="logout-btn" class="nav-btn">Выйти</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="auth.js"></script>
+    <script type="module" src="game.js"></script>
+    <script type="module" src="cards.js"></script>
+    <script type="module" src="guild.js"></script>
+</body>
+</html>
